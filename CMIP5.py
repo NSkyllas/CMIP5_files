@@ -19,7 +19,7 @@ st.set_page_config(
       )
 
 
-dictdel = pd.read_csv('CMIP5_files_short.csv')
+dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
 @st.cache
 def load_data():
 	df = pd.concat(dictdel.values(), ignore_index=True)
