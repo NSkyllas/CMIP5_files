@@ -22,16 +22,43 @@ st.set_page_config(
 dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
 @st.cache
 def load_data():
-	df = pd.concat(dictdel.values(), ignore_index=True)
-	return df
+	return dictdel
 data = load_data()
-st.write(data)
 	
+
+exp = st.multiselect('Experiment', data['experiment'].unique())
+f_data = data[(data['experiment'].isin(exp))]
+tem = st.multiselect('Temporal resolution', f_data['temp_res'].unique())
+f_data2 = f_data[(f_data['temp_res'].isin(tem))]
+var = st.multiselect('Variable', f_data2['variable'].unique())
+f_data3 = f_data2[(f_data2['variable'].isin(var))]
+
+
+if len(f_data3)>0:
+	st.write(f_data3)
+	st.write(str(len(f_data3)) + " files with " + str(len(f_data3["model"].unique())) + " models")
+elif len(f_data2)>0:
+	st.write(f_data2)
+	st.write(str(len(f_data2)) + " files with " + str(len(f_data2["variable"].unique())) + " variables from " + str(len(f_data2["model"].unique())) + " models")
+elif len(f_data)>0:
+	st.write(f_data)
+	st.write(str(len(f_data)) + " files with " + str(len(f_data["variable"].unique())) + " variables from " + str(len(f_data["model"].unique())) + " models")
+else:
+	st.write(data)
+	st.write(str(len(data)) + " files with " + str(len(data["variable"].unique())) + " variables from " + str(len(data["model"].unique())) + " models")
+
+
+#st.write(f_data)
+#st.write(f_data2)
+#st.write(f_data3)
+
 	##########################
-csv = data.to_csv(index=False)
-b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
-href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'
-st.markdown("## Download the table:")
-st.markdown(href, unsafe_allow_html=True)	
+#csv = datadel.to_csv(index=False)
+#b64 = base64.b64encode(csv.encode()).decode()  # some strings <-> bytes conversions necessary here
+#href = f'<a href="data:file/csv;base64,{b64}">Download CSV File</a> (right-click and save as &lt;some_name&gt;.csv)'
+#st.markdown("## Download the table:")
+#st.markdown(href, unsafe_allow_html=True)	
 	###########################
-	
+
+
+
