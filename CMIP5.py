@@ -20,8 +20,8 @@ st.set_page_config(
 
 st.sidebar.title('CMIP5 ETH files')
 
-st.sidebar.markdown('**How many files are available from ETH? Which variables? At which stemporal resolutions? From how many models? I hope this app makes our lives a bit easier when working with CMIP5 files!**')
-tabletype = st.sidebar.radio('', ['Search CMIP6 variables', 'Filter CMIP6 variables', 'Delivered variables', 'Interactive plots'])
+st.sidebar.markdown('**How many files are available from ETH? Which variables? At which temporal resolutions? From how many models? I hope this app makes our lives a bit easier when working with CMIP5 files!**')
+#tabletype = st.sidebar.radio('', ['Search CMIP6 variables', 'Filter CMIP6 variables', 'Delivered variables', 'Interactive plots'])
 
 
 dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
