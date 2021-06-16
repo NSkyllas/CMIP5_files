@@ -24,10 +24,18 @@ st.sidebar.markdown('**How many files are available from ETH? Which variables? A
 #tabletype = st.sidebar.radio('', ['Search CMIP6 variables', 'Filter CMIP6 variables', 'Delivered variables', 'Interactive plots'])
 
 
+#dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
+#@st.cache(allow_output_mutation=True, max_entries=10, ttl=30)
+#def load_data():
+#	return dictdel
+
+#dict1 = pd.read_excel('CMIP6_MIP_tables.xlsx', sheet_name = None)
 dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
-@st.cache(allow_output_mutation=True, max_entries=10, ttl=30)
+@st.cache
 def load_data():
-	return dictdel
+    df = pd.concat(dictdel.values(), ignore_index=True)
+    return df
+
 data = load_data()
 	
 
