@@ -5,3 +5,5 @@
 - From how many models? 
 
 I hope this app makes our lives a bit easier when working with CMIP5 & CMIP6 files!
+
+Streamlit app: https://share.streamlit.io/nskyllas/cmip5_files/main/CMIP5.py
