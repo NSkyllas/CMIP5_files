@@ -33,8 +33,8 @@ st.sidebar.markdown('**How many files are available from ETH? Which variables? A
 dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
 @st.cache
 def load_data():
-   #df = pd.concat(dictdel, ignore_index=True)
-    return df
+    #df = dictdel
+    return dictdel
 
 data = load_data()
 	
