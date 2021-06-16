@@ -30,10 +30,10 @@ st.sidebar.markdown('**How many files are available from ETH? Which variables? A
 #	return dictdel
 
 #dict1 = pd.read_excel('CMIP6_MIP_tables.xlsx', sheet_name = None)
-dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
+
 @st.cache
 def load_data():
-    #df = dictdel
+    dictdel = pd.read_csv('streamlit_CMIP5_short.csv')
     return dictdel
 
 data = load_data()
